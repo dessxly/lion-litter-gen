@@ -14,6 +14,17 @@ h1, h2 {
   color: #333;
 }
 
+.parents-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+}
+
 label {
   display: block;
   margin-bottom: 5px;
