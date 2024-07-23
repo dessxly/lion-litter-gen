@@ -2,7 +2,7 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,27 +12,43 @@ body {
 
 h1, h2 {
   color: #333;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
 }
 
 .parents-container {
   display: flex;
-  gap: 20px;
+  gap: 40px;
   margin-bottom: 20px;
 }
 
 .parent {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 label {
-  display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 select {
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 button {
@@ -43,6 +59,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
+  font-size: 16px;
 }
 
 button:hover {
@@ -55,21 +72,19 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
 li {
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
-  margin: 5px;
-  text-align: center;
   width: 200px;
-}
-
-p {
-  font-weight: bold;
-  margin-top: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .cub-details {
@@ -88,10 +103,61 @@ p {
 
 .mutation {
   font-weight: bold;
-  color: #FF5733; /* Change the color based on your preference */
+  color: #FF5733; /* Mutation color */
 }
 
 .traits {
   font-weight: bold;
-  color: #1E90FF; /* Change the color based on your preference */
+  color: #1E90FF; /* Traits color */
+}
+
+/* New CSS for color and trait visualization */
+.cub-color {
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #FFEBEE;
+  color: #3f3d3d;
+  border: 1px solid #3f3d3d;
+  margin: 0 5px;
+  text-transform: capitalize;
+}
+
+.cub-trait {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin: 0 5px;
+  text-transform: capitalize;
+}
+
+/* Visualize mutation effects */
+.cub-mutation {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #C62828;
+  margin: 0 5px;
+  text-transform: capitalize;
+}
+
+.cub-mutation.albinism {
+  background-color: #FCE4EC;
+}
+
+.cub-mutation.piebaldism {
+  background-color: #F1F8E9;
+}
+
+.cub-mutation.chimerism {
+  background-color: #FBE9E7;
+}
+
+.cub-mutation.melanism {
+  background-color: #B71C1C;
 }
