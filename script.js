@@ -93,6 +93,16 @@ function generateOffspring() {
       "none-none": ["none"],
       "albinism-albinism": ["albinism"],
       "piebaldism-piebaldism": ["piebaldism"],
+      "piebaldism-chimerism": [
+        { type: "piebaldism", odds: 0.5 },
+        { type: "none", odds: 0.2 },
+        { type: "chimerism", odds: 0.5 }
+    ],
+    "chimerism-piebaldism": [
+        { type: "piebaldism", odds: 0.5 },
+        { type: "none", odds: 0.2 },
+        { type: "chimerism", odds: 0.5 }
+    ],
       "chimerism-chimerism": ["chimerism"],
       "melanism-melanism": ["melanism"],
       "bob tail-bob tail": ["bob tail"],
@@ -179,13 +189,28 @@ function generateOffspring() {
           cubTrait = Array.isArray(possibleOutcomesTrait) ? getRandomAttribute(possibleOutcomesTrait.map(trait => ({ type: trait, odds: traitProbabilities[trait] }))) : possibleOutcomesTrait;
       }
 
-      if (parent1Mutation === parent2Mutation && parent1Mutation !== 'none') {
-          cubMutation = Math.random() < 0.9 ? parent1Mutation : 'none';
-      } else if (parent1Mutation === 'none' && parent2Mutation === 'none') {
-          cubMutation = getRandomAttribute(mutationTypes);
-      } else {
-          cubMutation = Array.isArray(possibleOutcomesMutation) ? getRandomAttribute(possibleOutcomesMutation.map(mutation => ({ type: mutation, odds: mutationProbabilities[mutation] }))) : possibleOutcomesMutation;
-      }
+       // Mutation logic
+    if (parent1Mutation === parent2Mutation && parent1Mutation !== 'none') {
+        cubMutation = Math.random() < 0.9 ? parent1Mutation : 'none';
+    } else if (parent1Mutation === 'none' && parent2Mutation === 'none') {
+        cubMutation = getRandomAttribute(mutationTypes);
+    } else {
+        const possibleOutcomesMutation = mutationRules[keyMutation];
+        if (Array.isArray(possibleOutcomesMutation)) {
+            // Handle mutation probabilities
+            let randomValue = Math.random();
+            for (const outcome of possibleOutcomesMutation) {
+                randomValue -= outcome.odds;
+                if (randomValue <= 0) {
+                    cubMutation = outcome.type;
+                    break;
+                }
+            }
+        } else {
+            cubMutation = possibleOutcomesMutation;
+        }
+    }
+
 
       const cubDetails = document.createElement('li');
 cubDetails.innerHTML = `
