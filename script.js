@@ -103,6 +103,16 @@ function generateOffspring() {
         { type: "none", odds: 0.2 },
         { type: "chimerism", odds: 0.5 }
     ],
+    "piebaldism-melanism": [
+        { type: "piebaldism", odds: 0.5 },
+        { type: "none", odds: 0.2 },
+        { type: "melanism", odds: 0.5 }
+    ],
+    "melanism-piebaldism": [
+        { type: "piebaldism", odds: 0.5 },
+        { type: "none", odds: 0.2 },
+        { type: "melanism", odds: 0.5 }
+    ],
       "chimerism-chimerism": ["chimerism"],
       "melanism-melanism": ["melanism"],
       "bob tail-bob tail": ["bob tail"],
